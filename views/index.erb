@@ -1,0 +1,16 @@
+<h2>Sign-Up you fan</h2>
+
+<li>
+  <form id='signup-form'>
+    <input type='text' name='fan[name]' placeholder='...name'/>
+    <input type='text' name='fan[email]' placeholder='...email'/>
+    <input type='submit' value='Sign-Up'/>
+  </form>
+</li>
+
+<ul id='fan-list'>
+  <% @fans.each do |fan| %>
+    <li><%= fan.name %></li>
+  <% end %>
+</ul>
+
