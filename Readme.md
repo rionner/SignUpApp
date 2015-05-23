@@ -4,7 +4,7 @@ db_name="email_sign_up_app"
 table_name="fans"
 
 
-# ONLY EDIT ABOVE HERE...
+# ONLY EDIT ABOVE
 
 # Styles
 mkdir public
@@ -59,7 +59,7 @@ echo -e ");\n" >> migrations.sql
 psql -c "CREATE DATABASE $db_name;"
 psql $db_name -c "CREATE TABLE $table_name(id SERIAL PRIMARY KEY, name VARCHAR(255),email VARCHAR(255));"
 
-# Views!
+# Views
 mkdir views
 touch views/index.erb
 echo "<h2>Sign-Up you $model_name</h2>
@@ -94,35 +94,34 @@ echo "<html lang='en'>
 </body>
 </html>" > views/layout.erb
 
-# Gemfile!
+# Gemfile
 touch Gemfile
 echo -e "source 'https://rubygems.org'\n\ngem 'sinatra'\ngem 'sinatra-activerecord'\ngem 'pg'" > Gemfile
 
-# Config!!!
+# Config
 touch config.ru
 echo -e "require './app'\nrun Sinatra::Application" > config.ru
 
-# APP!
+# App
 touch app.rb
 
-# Bundler!
+# Bundler
 echo -e "require 'bundler'\nBundler.require()\n" > app.rb
 
-# Models!
+# Models
 echo -e "require './models/$model_name'\n" >> app.rb
 
-# Connection!
+# Connection
 echo -e "ActiveRecord::Base.establish_connection(" >> app.rb
 echo -e "  adapter: 'postgresql'," >> app.rb
 echo -e "  database: '$db_name'" >> app.rb
 echo -e ")\n" >> app.rb
 
-# Routes!
+# Routes
 echo -e "get '/' do\n  @$table_name = $model_Name.all\n  erb :index\nend\n" >> app.rb
 echo -e "get '/$table_name' do\n  content_type :json\n  $table_name = $model_Name.all\n  $table_name.to_json\nend\n" >> app.rb
 echo -e "post '/$table_name' do\n  content_type :json\n  $model_name = $model_Name.create(params[:$model_name])\n  $model_name.to_json\nend" >> app.rb
 
-
-# Launch!
+# Launch
 bundle
 bundle exec rackup
