@@ -1,4 +1,44 @@
 body{
   margin: 0px;
   padding: 0px;
+  width: 100%;
+  min-height: 100%;
+}
+
+h2{
+  font-family: 'Helvetica';
+  font-size: 80px;
+  text-align: center;
+}
+
+#signup-form{
+  margin: 0 auto;
+  width: 80%;
+  background-color: black;
+}
+
+input{
+  margin: 10px auto;
+  width: 300px;
+  height: 45px;
+  font-family: 'Helvetica';
+}
+
+input[type='submit']{
+  background-color: white;
+  border-style: none;
+  font-size: 20px;
+}
+
+input[type='submit']:hover{
+  transition: .5s;
+  background-color: red;
+}
+
+li{
+  margin: 0 auto;
+  width: 60%;
+  padding: 10px;
+  list-style-type: circle;
+  font-family: 'Helvetica';
 }
